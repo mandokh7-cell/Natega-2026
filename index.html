@@ -1,0 +1,343 @@
+
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>نتيجة الثانوية العامة | منصة الثانوية - inneroom Space</title>
+  
+    <meta name="description" content="استعلم عن نتيجة الثانوية العامة بسهولة وسرعة عبر منصة الثانوية من inneroom Space.">
+    <meta name="keywords" content="نتيجة، ثانوية عامة، استعلام عن النتيجة، رقم الجلوس، منصة تعليمية">
+    <meta name="author" content="inneroom Space">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --bg-body: #F3F5F4;          
+            --text-main: #111816;        
+            --green-brand: #1A3C34;      
+            --green-bg-rich: #142E28;    
+            --green-light: #2C5F52;
+            --shadow-card: 0 10px 40px rgba(0,0,0,0.05);
+            --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+
+        body { 
+            font-family: 'Cairo', sans-serif; 
+            background-color: var(--bg-body);
+            color: var(--text-main);
+            scroll-behavior: smooth;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+        
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(15px); } to { opacity: 1; transform: translateY(0); } }
+        .animate-fade-in { animation: fadeIn 0.6s ease-out forwards; }
+        
+        @keyframes pulse-soft { 0%, 100% { opacity: 1; } 50% { opacity: 0.5; } }
+        .animate-pulse-soft { animation: pulse-soft 2s cubic-bezier(0.4, 0, 0.6, 1) infinite; }
+
+        .glass-nav {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(26, 60, 52, 0.1);
+        }
+
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #f1f1f1; }
+        ::-webkit-scrollbar-thumb { background: var(--green-brand); border-radius: 10px; }
+
+        .search-input:focus {
+            box-shadow: 0 0 0 4px rgba(74, 222, 128, 0.2);
+            border-color: #4ADE80;
+        }
+
+        .result-item {
+            transition: var(--transition);
+        }
+        .result-item:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            border-color: rgba(74, 222, 128, 0.4);
+        }
+    </style>
+</head>
+<body class="text-right">
+
+    <!-- شريط التنقل -->
+    <nav class="glass-nav fixed w-full z-50 top-0">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="flex items-center gap-3 cursor-pointer group" onclick="window.location.href='index.html'">
+                <div class="w-10 h-10 bg-[#1A3C34] rounded-xl flex items-center justify-center text-white shadow-lg transition transform group-hover:scale-105">
+                    <i class="fas fa-graduation-cap text-xl"></i>
+                </div>
+                <div>
+                    <h1 class="text-lg md:text-xl font-bold text-[#111816] leading-tight">منصة الثانوية</h1>
+                    <p class="text-[10px] md:text-xs text-[#1A3C34] font-bold opacity-80">inneroom Space</p>
+                </div>
+            </div>
+            
+            <div class="flex gap-2">
+                <a href="index.html" class="bg-[#1A3C34]/10 text-[#1A3C34] hover:bg-[#1A3C34] hover:text-white px-4 py-2 rounded-xl font-bold text-sm transition flex items-center gap-2 shadow-sm">
+                    <span class="hidden sm:inline">الرئيسية</span>
+                    <i class="fas fa-home text-lg"></i>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- المحتوى الرئيسي -->
+    <main class="flex-grow pt-32 pb-16 px-4 md:px-6 flex flex-col items-center">
+        
+        <!-- قسم البحث -->
+        <div class="w-full max-w-3xl bg-white rounded-[32px] p-8 md:p-12 shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-gray-100 text-center animate-fade-in relative overflow-hidden mb-8">
+            <div class="absolute top-0 left-0 right-0 h-2 bg-gradient-to-r from-[#1A3C34] to-[#4ADE80]"></div>
+            
+            <div class="inline-flex items-center justify-center w-20 h-20 bg-[#4ADE80]/10 text-[#1A3C34] rounded-full mb-6">
+                <i class="fas fa-award text-4xl"></i>
+            </div>
+            
+            <h2 class="text-3xl md:text-5xl font-black text-[#1A3C34] mb-4">نتيجة الثانوية العامة</h2>
+            <p class="text-gray-500 font-bold mb-8 text-lg">أدخل رقم الجلوس الخاص بك للاستعلام عن النتيجة بالتفصيل.</p>
+            
+            <form id="search-form" class="relative max-w-md mx-auto">
+                <div class="relative">
+                    <input type="number" id="seat-number" required placeholder="رقم الجلوس..." 
+                           class="search-input w-full bg-gray-50 border-2 border-gray-200 text-[#1A3C34] text-lg font-bold rounded-2xl py-4 px-6 pr-14 outline-none transition-all duration-300">
+                    <i class="fas fa-id-card absolute right-5 top-1/2 -translate-y-1/2 text-gray-400 text-xl"></i>
+                </div>
+                <button type="submit" id="search-btn" class="mt-4 w-full bg-[#1A3C34] hover:bg-[#142E28] text-white font-black text-lg py-4 rounded-2xl transition shadow-lg flex justify-center items-center gap-3 group">
+                    <span>عرض النتيجة</span>
+                    <i class="fas fa-search group-hover:scale-110 transition-transform"></i>
+                </button>
+            </form>
+        </div>
+
+        <!-- الهيكل الوهمي للتحميل -->
+        <div id="skeleton-loader" class="w-full max-w-4xl hidden mb-8">
+            <div class="bg-white rounded-[32px] p-8 shadow-sm border border-gray-100 animate-pulse-soft">
+                <div class="h-8 bg-gray-200 rounded-full w-1/3 mx-auto mb-4"></div>
+                <div class="h-4 bg-gray-200 rounded-full w-1/4 mx-auto mb-10"></div>
+                <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+                    <div class="h-24 bg-gray-100 rounded-2xl"></div>
+                    <div class="h-24 bg-gray-100 rounded-2xl"></div>
+                    <div class="h-24 bg-gray-100 rounded-2xl"></div>
+                    <div class="h-24 bg-gray-100 rounded-2xl"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- حاوية النتيجة -->
+        <div id="result-container" class="w-full max-w-4xl hidden animate-fade-in mb-8">
+            <div class="bg-white rounded-[32px] overflow-hidden shadow-[0_10px_40px_rgb(0,0,0,0.06)] border border-gray-100">
+                <div class="bg-gradient-to-r from-[#1A3C34] to-[#2C5F52] p-8 text-center text-white relative">
+                    <div class="absolute top-0 right-0 w-32 h-32 bg-white opacity-5 rounded-bl-full"></div>
+                    <div class="absolute bottom-0 left-0 w-24 h-24 bg-[#4ADE80] opacity-10 rounded-tr-full"></div>
+                    
+                    <h3 id="res-main-title" class="text-3xl md:text-4xl font-black mb-3 relative z-10"></h3>
+                    <div class="inline-block bg-white/20 backdrop-blur-sm px-6 py-2 rounded-full border border-white/20 text-lg font-bold shadow-sm relative z-10">
+                        رقم الجلوس: <span id="res-main-seat" class="text-[#4ADE80]"></span>
+                    </div>
+                </div>
+
+                <div class="p-8 bg-white">
+                    <div id="dynamic-fields" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6">
+                        <!-- سيتم تعبئة البيانات هنا تلقائياً -->
+                    </div>
+                </div>
+                
+                <div class="bg-gray-50 p-6 border-t border-gray-100 text-center">
+                    <button onclick="window.print()" class="bg-white border-2 border-[#1A3C34] text-[#1A3C34] hover:bg-[#1A3C34] hover:text-white font-bold py-2.5 px-8 rounded-xl transition flex inline-flex justify-center items-center gap-2">
+                        <i class="fas fa-print"></i> طباعة النتيجة
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- رسالة الخطأ -->
+        <div id="error-message" class="w-full max-w-md hidden animate-fade-in mb-8">
+            <div class="bg-red-50 border-2 border-red-200 text-red-700 rounded-2xl p-6 text-center font-bold shadow-sm">
+                <i class="fas fa-exclamation-triangle text-3xl mb-3 block text-red-500"></i>
+                <span id="error-text">عذراً، رقم الجلوس غير موجود. تأكد من الرقم وحاول مجدداً.</span>
+            </div>
+        </div>
+    </main>
+
+    <!-- الفوتر -->
+    <footer style="background-color: var(--green-bg-rich); color: #fff;" class="py-12 mt-auto">
+        <div class="container mx-auto px-6 text-center">
+            <div class="flex justify-center items-center gap-2 mb-4 cursor-pointer" onclick="window.location.href='index.html'">
+                <i class="fas fa-book-reader text-white opacity-70"></i>
+                <span class="font-bold text-lg">منصة الثانوية</span>
+            </div>
+            <p class="text-sm opacity-60 mb-6 max-w-lg mx-auto leading-relaxed">بوابتك الرقمية للحصول على أفضل المذكرات والامتحانات الموثقة لطلاب الثانوية العامة ٢٠٢٦.</p>
+            
+            <div class="flex flex-wrap justify-center items-center gap-4 mb-8">
+                <a href="https://www.facebook.com/profile.php?id=61578655365458" target="_blank" rel="noopener noreferrer" class="w-11 h-11 rounded-full bg-white/5 border border-white/10 flex items-center justify-center hover:bg-[#1877F2] hover:border-transparent hover:-translate-y-1 hover:shadow-lg hover:shadow-[#1877F2]/30 transition-all duration-300">
+                    <i class="fab fa-facebook-f text-lg"></i>
+                </a>
+                <a href="https://x.com/Inneroom_Space" target="_blank" rel="noopener noreferrer" class="w-11 h-11 rounded-full bg-white/5 border border-white/10 flex items-center justify-center hover:bg-[#1DA1F2] hover:border-transparent hover:-translate-y-1 hover:shadow-lg hover:shadow-[#1DA1F2]/30 transition-all duration-300">
+                    <i class="fab fa-twitter text-lg"></i>
+                </a>
+                <a href="https://www.instagram.com/inneroom.space?igsh=eHhjYnVncDJvcDh3" target="_blank" rel="noopener noreferrer" class="w-11 h-11 rounded-full bg-white/5 border border-white/10 flex items-center justify-center hover:bg-gradient-to-tr hover:from-[#F58529] hover:via-[#DD2A7B] hover:to-[#8134AF] hover:border-transparent hover:-translate-y-1 hover:shadow-lg hover:shadow-[#DD2A7B]/30 transition-all duration-300">
+                    <i class="fab fa-instagram text-lg"></i>
+                </a>
+                <a href="https://wa.me/201283462502" target="_blank" rel="noopener noreferrer" class="w-11 h-11 rounded-full bg-white/5 border border-white/10 flex items-center justify-center hover:bg-[#25D366] hover:border-transparent hover:-translate-y-1 hover:shadow-lg hover:shadow-[#25D366]/30 transition-all duration-300">
+                    <i class="fab fa-whatsapp text-xl"></i>
+                </a>
+                <a href="mailto:inneroomspace@gmail.com" class="w-11 h-11 rounded-full bg-white/5 border border-white/10 flex items-center justify-center hover:bg-[#EA4335] hover:border-transparent hover:-translate-y-1 hover:shadow-lg hover:shadow-[#EA4335]/30 transition-all duration-300">
+                    <i class="fas fa-envelope text-lg"></i>
+                </a>
+            </div>
+
+            <div class="mb-6">
+                <p class="text-sm font-bold tracking-wide">
+                    Developed by <a href="http://al-zain.site" target="_blank" class="text-[#4ADE80] hover:underline decoration-white underline-offset-4 transition-all">Al-Zain</a>
+                </p>
+            </div>
+            <div class="text-[10px] opacity-30 font-semibold tracking-widest uppercase">&copy; 2026 جميع الحقوق محفوظة لـ Mohamed Khald</div>
+        </div>
+    </footer>
+
+    <!-- Firebase Script -->
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
+        import { getAuth, signInAnonymously, signInWithCustomToken } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
+        import { getFirestore, doc, getDoc } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
+
+        // إعدادات Firebase الخاصة بك
+        const firebaseConfig = {
+            apiKey: "AIzaSyCpJScin3sy9ehUner-W1lqB43WDY9PIYs",
+            authDomain: "natega-f7a36.firebaseapp.com",
+            projectId: "natega-f7a36",
+            storageBucket: "natega-f7a36.firebasestorage.app",
+            messagingSenderId: "450960885356",
+            appId: "1:450960885356:web:6547036595aa72e7737a49"
+        };
+
+        const isCanvasEnv = typeof __firebase_config !== 'undefined';
+        const finalConfig = isCanvasEnv ? JSON.parse(__firebase_config) : firebaseConfig;
+        
+        const app = initializeApp(finalConfig);
+        const auth = getAuth(app);
+        const db = getFirestore(app);
+
+        const RESULTS_COLLECTION = "highschool_results";
+
+        function getResultDocRef(seatNumber) {
+            if (isCanvasEnv) {
+                const appId = typeof __app_id !== 'undefined' ? __app_id : 'default';
+                return doc(db, 'artifacts', appId, 'public', 'data', RESULTS_COLLECTION, seatNumber);
+            }
+            return doc(db, RESULTS_COLLECTION, seatNumber);
+        }
+
+        async function initAuth() {
+            try {
+                if (isCanvasEnv && typeof __initial_auth_token !== 'undefined' && __initial_auth_token) {
+                    await signInWithCustomToken(auth, __initial_auth_token);
+                } else {
+                    await signInAnonymously(auth); // تسجيل دخول مجهول للسماح للطلاب بقراءة البيانات
+                }
+            } catch (e) {
+                console.warn("Auth info:", e);
+            }
+        }
+        initAuth();
+
+        const searchForm = document.getElementById('search-form');
+        const seatInput = document.getElementById('seat-number');
+        const searchBtn = document.getElementById('search-btn');
+        const skeletonLoader = document.getElementById('skeleton-loader');
+        const resultContainer = document.getElementById('result-container');
+        const errorMessage = document.getElementById('error-message');
+        const dynamicFields = document.getElementById('dynamic-fields');
+
+        searchForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const seatNumber = seatInput.value.trim();
+            if (!seatNumber) return;
+
+            resultContainer.classList.add('hidden');
+            errorMessage.classList.add('hidden');
+            skeletonLoader.classList.remove('hidden');
+            searchBtn.disabled = true;
+            searchBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> جاري البحث...';
+
+            try {
+                const docRef = getResultDocRef(seatNumber);
+                const docSnap = await getDoc(docRef);
+
+                if (docSnap.exists()) {
+                    displayResult(docSnap.data(), seatNumber);
+                } else {
+                    showError("عذراً، لم نتمكن من العثور على نتيجة برقم الجلوس: " + seatNumber);
+                }
+            } catch (error) {
+                console.error("Error:", error);
+                showError("حدث خطأ في الاتصال بقاعدة البيانات. الرجاء المحاولة لاحقاً.");
+            } finally {
+                skeletonLoader.classList.add('hidden');
+                searchBtn.disabled = false;
+                searchBtn.innerHTML = '<span>عرض النتيجة</span><i class="fas fa-search group-hover:scale-110 transition-transform"></i>';
+            }
+        });
+
+        function displayResult(data, seatNum) {
+            dynamicFields.innerHTML = '';
+            
+            let studentName = "طالب ثانوية عامة";
+            const nameKeys = ['الاسم', 'اسم الطالب', 'name', 'Student Name', 'الإسم'];
+            
+            for (let k of nameKeys) {
+                if (data[k]) {
+                    studentName = data[k];
+                    delete data[k];
+                    break;
+                }
+            }
+
+            const seatKeys = ['رقم الجلوس', 'رقم_الجلوس', 'seat number'];
+            for (let k of seatKeys) {
+                if(data[k]) delete data[k];
+            }
+
+            document.getElementById('res-main-title').innerText = studentName;
+            document.getElementById('res-main-seat').innerText = seatNum;
+
+            for (const [key, value] of Object.entries(data)) {
+                if (value === null || value === undefined || value.toString().trim() === '') continue;
+
+                const isTotal = key.includes('المجموع') || key.includes('النسبة');
+                const bgColor = isTotal ? 'bg-[#1A3C34]/5 border-[#1A3C34]/20' : 'bg-gray-50 border-gray-100';
+                const textColor = isTotal ? 'text-[#1A3C34]' : 'text-gray-700';
+
+                const fieldCard = `
+                    <div class="${bgColor} result-item border p-5 rounded-2xl flex flex-col items-center justify-center text-center h-full">
+                        <span class="text-sm font-bold text-gray-500 mb-2">${key}</span>
+                        <span class="text-xl md:text-2xl font-black ${textColor}">${value}</span>
+                    </div>
+                `;
+                dynamicFields.insertAdjacentHTML('beforeend', fieldCard);
+            }
+
+            resultContainer.classList.remove('hidden');
+        }
+
+        function showError(msg) {
+            document.getElementById('error-text').innerText = msg;
+            errorMessage.classList.remove('hidden');
+        }
+    </script>
+</body>
+</html>
+
